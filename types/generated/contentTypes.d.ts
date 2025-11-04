@@ -546,6 +546,7 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    emiStartsFrom: Schema.Attribute.BigInteger;
     fuelTypes: Schema.Attribute.String;
     gearType: Schema.Attribute.Enumeration<['manual', 'automatic']>;
     kmsDriven: Schema.Attribute.BigInteger;

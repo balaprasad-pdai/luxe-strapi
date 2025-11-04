@@ -51,6 +51,9 @@
     },
     "transmissionTypes": {
       "type": "string"
+    },
+    "emiStartsFrom": {
+      "type": "biginteger"
     }
   }
 }
