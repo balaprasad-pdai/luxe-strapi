@@ -545,7 +545,7 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
     bodyTypes: Schema.Attribute.String;
     brand: Schema.Attribute.Enumeration<
       [
-        'range-rover',
+        'rangerover',
         'benz',
         'bmw',
         'lexus',
