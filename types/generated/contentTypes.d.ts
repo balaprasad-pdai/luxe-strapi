@@ -543,6 +543,18 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
   };
   attributes: {
     bodyTypes: Schema.Attribute.String;
+    brand: Schema.Attribute.Enumeration<
+      [
+        'range-rover',
+        'benz',
+        'bmw',
+        'lexus',
+        'toyota',
+        'volvo',
+        'audi',
+        'mini-cooper',
+      ]
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

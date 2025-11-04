@@ -54,6 +54,19 @@
     },
     "emiStartsFrom": {
       "type": "biginteger"
+    },
+    "brand": {
+      "type": "enumeration",
+      "enum": [
+        "range-rover",
+        "benz",
+        "bmw",
+        "lexus",
+        "toyota",
+        "volvo",
+        "audi",
+        "mini-cooper"
+      ]
     }
   }
 }
