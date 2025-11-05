@@ -67,6 +67,27 @@
         "audi",
         "mini-cooper"
       ]
+    },
+    "REGYEAR": {
+      "type": "date"
+    },
+    "ENGINECAPACITY": {
+      "type": "integer"
+    },
+    "SPAREKEY": {
+      "type": "boolean"
+    },
+    "REGNUMBER": {
+      "type": "biginteger"
+    },
+    "INSURANCE": {
+      "type": "enumeration",
+      "enum": [
+        "Need renewal, Active"
+      ]
+    },
+    "INSURANCETYPE": {
+      "type": "integer"
     }
   }
 }

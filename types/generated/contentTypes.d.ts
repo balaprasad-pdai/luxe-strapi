@@ -559,8 +559,11 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     emiStartsFrom: Schema.Attribute.BigInteger;
+    ENGINECAPACITY: Schema.Attribute.Integer;
     fuelTypes: Schema.Attribute.String;
     gearType: Schema.Attribute.Enumeration<['manual', 'automatic']>;
+    INSURANCE: Schema.Attribute.Enumeration<['Need renewal, Active']>;
+    INSURANCETYPE: Schema.Attribute.Integer;
     kmsDriven: Schema.Attribute.BigInteger;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::car.car'> &
@@ -570,6 +573,9 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
     owners: Schema.Attribute.Integer;
     priceRange: Schema.Attribute.BigInteger;
     publishedAt: Schema.Attribute.DateTime;
+    REGNUMBER: Schema.Attribute.BigInteger;
+    REGYEAR: Schema.Attribute.Date;
+    SPAREKEY: Schema.Attribute.Boolean;
     thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     transmissionTypes: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
