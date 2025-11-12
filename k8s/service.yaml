@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: strapi-app-service
+  namespace: strapi-app
+  labels:
+    app: strapi-app
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 1337
+    protocol: TCP
+    name: http
+  selector:
+    app: strapi-app
