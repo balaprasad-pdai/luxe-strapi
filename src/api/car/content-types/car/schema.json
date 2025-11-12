@@ -93,6 +93,9 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "test": {
+      "type": "string"
     }
   }
 }

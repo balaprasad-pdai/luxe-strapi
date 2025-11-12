@@ -579,6 +579,7 @@ export interface ApiCarCar extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     SPAREKEY: Schema.Attribute.Boolean;
+    test: Schema.Attribute.String;
     thumbnail: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     transmissionTypes: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
