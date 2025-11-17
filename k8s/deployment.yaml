@@ -19,33 +19,37 @@ spec:
       - name: strapi-app
         image: populardigitalai/strapi-app:latest
         imagePullPolicy: Always
-        # Environment comes from ConfigMap and Secrets (do not bake into the image)
         ports:
         - containerPort: 1337
           protocol: TCP
+        env:
+          - name: HOST
+            value: "0.0.0.0"
+          - name: PORT
+            value: "1337"
+        envFrom:
+          - configMapRef:
+              name: strapi-app-config
         resources:
           requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "256Mi"
+            memory: "512Mi"
             cpu: "200m"
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 1337
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          timeoutSeconds: 5
-          failureThreshold: 3
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
         readinessProbe:
           httpGet:
             path: /
             port: 1337
-          initialDelaySeconds: 5
-          periodSeconds: 5
-          timeoutSeconds: 3
-          failureThreshold: 3
-        envFrom:
-          - configMapRef:
-              name: strapi-app-config
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 6
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 1337
+          initialDelaySeconds: 90
+          periodSeconds: 20
+          timeoutSeconds: 5
+          failureThreshold: 6
