@@ -27,29 +27,34 @@ spec:
             value: "0.0.0.0"
           - name: PORT
             value: "1337"
+          - name: NODE_OPTIONS        # prevents JS OOM crashes
+            value: "--max-old-space-size=2048"
         envFrom:
           - configMapRef:
               name: strapi-app-config
+
         resources:
           requests:
-            memory: "512Mi"
-            cpu: "200m"
-          limits:
             memory: "1Gi"
             cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1"
+
         readinessProbe:
           httpGet:
-            path: /
+            path: /_health
             port: 1337
-          initialDelaySeconds: 60
+          initialDelaySeconds: 40
           periodSeconds: 10
-          timeoutSeconds: 5
+          timeoutSeconds: 10
           failureThreshold: 6
+
         livenessProbe:
           httpGet:
-            path: /
+            path: /_health
             port: 1337
-          initialDelaySeconds: 90
+          initialDelaySeconds: 60
           periodSeconds: 20
-          timeoutSeconds: 5
+          timeoutSeconds: 10
           failureThreshold: 6
