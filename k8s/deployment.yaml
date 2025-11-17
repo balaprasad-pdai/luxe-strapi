@@ -19,43 +19,33 @@ spec:
       - name: strapi-app
         image: populardigitalai/strapi-app:latest
         imagePullPolicy: Always
+        # Environment comes from ConfigMap and Secrets (do not bake into the image)
         ports:
         - containerPort: 1337
           protocol: TCP
-        env:
-          - name: HOST
-            value: "0.0.0.0"
-          - name: PORT
-            value: "1337"
-          - name: NODE_OPTIONS        # prevents JS OOM crashes
-            value: "--max-old-space-size=2048"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 1337
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 1337
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
         envFrom:
           - configMapRef:
               name: strapi-app-config
-
-        resources:
-          requests:
-            memory: "512Mi"
-            cpu: "250m"
-          limits:
-            memory: "1Gi"
-            cpu: "500m"
-
-
-        readinessProbe:
-          httpGet:
-            path: /_health
-            port: 1337
-          initialDelaySeconds: 40
-          periodSeconds: 10
-          timeoutSeconds: 10
-          failureThreshold: 6
-
-        livenessProbe:
-          httpGet:
-            path: /_health
-            port: 1337
-          initialDelaySeconds: 60
-          periodSeconds: 20
-          timeoutSeconds: 10
-          failureThreshold: 6
