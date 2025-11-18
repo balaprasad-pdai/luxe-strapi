@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: strapi-app
-        image: populardigitalai/luxe-strapi:latest
+        image: populardigitalai/strapi-app:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 1337
