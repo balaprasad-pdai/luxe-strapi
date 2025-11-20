@@ -34,10 +34,10 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-      - luxe-strapi.popularconsult.com
+      - strapi.popularconsult.com
       secretName: strapi-app-tls
   rules:
-    - host: luxe-strapi.popularconsult.com
+    - host: strapi.popularconsult.com
       http:
         paths:
           - path: /
