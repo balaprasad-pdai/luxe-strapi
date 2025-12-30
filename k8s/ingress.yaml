@@ -1,0 +1,53 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: sample-app-ingress
+#   namespace: sample-app
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+#     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+#     # Uncomment below for SSL (if using cert-manager)
+#     cert-manager.io/cluster-issuer: "letsencrypt-prod"
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#   - host: massimo.global
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: sample-app-service
+#             port:
+#               number: 80
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: strapi-app-ingress
+  namespace: strapi-app
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    # Allow larger request bodies for file uploads (set to desired size)
+    # https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#proxy-body-size
+    nginx.ingress.kubernetes.io/proxy-body-size: "400m"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+      - strapi.popularconsult.com
+      secretName: strapi-app-tls
+  rules:
+    - host: strapi.popularconsult.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: strapi-app-service
+                port:
+                  number: 80
+  

@@ -1,0 +1,101 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cars",
+  "info": {
+    "singularName": "car",
+    "pluralName": "cars",
+    "displayName": "Cars"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "owners": {
+      "type": "integer"
+    },
+    "kmsDriven": {
+      "type": "biginteger"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "gearType": {
+      "type": "enumeration",
+      "enum": [
+        "manual",
+        "automatic"
+      ]
+    },
+    "modelYear": {
+      "type": "integer"
+    },
+    "priceRange": {
+      "type": "biginteger"
+    },
+    "fuelTypes": {
+      "type": "string"
+    },
+    "bodyTypes": {
+      "type": "string"
+    },
+    "transmissionTypes": {
+      "type": "string"
+    },
+    "emiStartsFrom": {
+      "type": "biginteger"
+    },
+    "brand": {
+      "type": "enumeration",
+      "enum": [
+        "rangerover",
+        "benz",
+        "bmw",
+        "lexus",
+        "toyota",
+        "volvo",
+        "audi",
+        "mini-cooper"
+      ]
+    },
+    "REGYEAR": {
+      "type": "date"
+    },
+    "ENGINECAPACITY": {
+      "type": "integer"
+    },
+    "SPAREKEY": {
+      "type": "boolean"
+    },
+    "REGNUMBER": {
+      "type": "biginteger"
+    },
+    "INSURANCE": {
+      "type": "enumeration",
+      "enum": [
+        "Need renewal, Active"
+      ]
+    },
+    "INSURANCETYPE": {
+      "type": "integer"
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "test": {
+      "type": "string"
+    }
+  }
+}
